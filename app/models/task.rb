@@ -1,6 +1,5 @@
 class Task < ApplicationRecord
-  after_update :broadcast_update
-  after_create :broadcast_update
+  after_commit :broadcast_update
 
   private
 

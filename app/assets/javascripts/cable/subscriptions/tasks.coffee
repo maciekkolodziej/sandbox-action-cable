@@ -1,5 +1,5 @@
 console.log('Tasks.coffee included')
-App.cable.subscriptions.create "TasksChannel",
+App.tasksChannel = App.cable.subscriptions.create "TasksChannel",
   received: (data) ->
     task = document.getElementById("task_" + data.id)
     if(task?)
@@ -12,6 +12,12 @@ App.cable.subscriptions.create "TasksChannel",
       item.id = "task_" + data.id
       list.appendChild(item)
       flash(item)
+
+document.getElementById("new-task-form").onsubmit = (e) ->
+  e.preventDefault()
+  name = document.getElementById("new-task-name")
+  App.tasksChannel.send({ val: name.value })
+  name.value = null
 
 flash = (element) ->
   element.style.color = 'red'

@@ -5,6 +5,13 @@
 </p>
 
 <h2>Tasks</h2>
+
+<form id="new-task-form">
+  <label for="new-task-name">Create new task</label>
+  <input type="text" id="new-task-name"/>
+  <button>Send</button>
+</form>
+
 <ul id="tasks-list">
   <% @tasks.each do |task| %>
     <li id="task_<%= task.id %>"><%= task.name %></li>
