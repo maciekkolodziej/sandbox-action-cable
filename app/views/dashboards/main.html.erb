@@ -1,0 +1,14 @@
+<h1>Dashboard</h1>
+
+<p>
+  Add or edit tasks in another tab or browser
+</p>
+
+<h2>Tasks</h2>
+<ul id="tasks-list">
+  <% @tasks.each do |task| %>
+    <li id="task_<%= task.id %>"><%= task.name %></li>
+  <% end %>
+</ul>
+
+<%= javascript_include_tag 'cable/subscriptions/tasks' %>
